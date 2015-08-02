@@ -6,10 +6,14 @@
   <link rel="stylesheet" href="css/main.min.css">
 </head>
 <body>
-  <section class="starter flex-center">
+  <section>
     <h1>Hello, world!</h1>
-    <p>This is Jefferson Lam's <a href="https://github.com/jeffersonlam/gulp-starter">gulp-starter repo</a>. Let's make something awesome!</p> 
+    <form id="form" onsubmit="return parse();">
+      <input type="textarea" id="text"/><br>
+      <button>Submit</button>
+    </form>
   </section>
+
   <script src="js/all.min.js"></script>
 </body>
 </html>
