@@ -7,6 +7,7 @@ var cssmin = require('gulp-minify-css');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var jshint = require('gulp-jshint');
+var jsonminify = require('gulp-jsonminify');
 var scsslint = require('gulp-scss-lint');
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
@@ -58,10 +59,16 @@ gulp.task('jshint', function() {
     .pipe(jshint.reporter('jshint-stylish'));
 });
 
+gulp.task('json', function () {
+  gulp.src(['js/data/*.json'])
+    .pipe(jsonminify())
+    .pipe(gulp.dest('dist/js/data'));
+});
+
 gulp.task('watch', function() {
   gulp.watch('scss/**/*.scss', ['scss']);
   gulp.watch('js/*.js', ['jshint', 'js']);
   gulp.watch('./*.html', ['html']);
 });
 
-gulp.task('default', ['scss-lint', 'browser-sync', 'js', 'html', 'scss', 'watch']);
+gulp.task('default', ['scss-lint', 'browser-sync', 'js', 'html', 'scss', 'json', 'watch']);
